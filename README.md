@@ -39,6 +39,24 @@ Dzigned-hosted URL.
 Everything below — API, both databases, AI integration, auth, and the Docker/Railway/Vercel deployment —
 was designed and built end-to-end for this project.
 
+## Demo — resume import → live portfolio
+
+Upload a resume PDF and Gemini parses it into structured sections that prefill the guided editor,
+live preview included:
+
+<p align="center">
+  <img src="./docs/screenshots/resume-import-editor.jpg" alt="Editor showing Import resume, with fields and live preview prefilled from a parsed resume" width="850">
+</p>
+
+...and here's the result, published to the user's own GitHub Pages site with one click:
+[svudgimath.github.io/dzigned-portfolio-svudgimath-2](https://svudgimath.github.io/dzigned-portfolio-svudgimath-2/)
+
+<p align="center">
+  <img src="./docs/screenshots/published-portfolio-hero.jpg" alt="Published portfolio hero section" width="850">
+  <br><br>
+  <img src="./docs/screenshots/published-portfolio-about.jpg" alt="Published portfolio About Me section" width="850">
+</p>
+
 ## Highlights
 
 - **Two purpose-fit databases, not one default.** PostgreSQL holds relational/transactional data (users,
