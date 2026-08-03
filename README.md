@@ -62,7 +62,7 @@ was designed and built end-to-end for this project.
   are on in production; a custom middleware answers the platform health check *before* Django's
   `ALLOWED_HOSTS` validation runs, because Railway's internal health probe doesn't send the public domain
   as its `Host` header — a real bug found and fixed during deployment, not a hypothetical.
-- **379 automated backend tests** covering auth, throttling, exception-handler shape, LLM failure/retry
+- **383 automated backend tests** covering auth, throttling, exception-handler shape, LLM failure/retry
   paths, and even a timezone-awareness regression in the Mongo client (naive vs. aware datetimes silently
   breaking comparisons).
 
@@ -112,7 +112,7 @@ API container.
 | **External integration** | GitHub OAuth + REST API (repo creation, file commits, Pages) |
 | **Containerization** | Docker (multi-stage-ready single image, non-root user, gunicorn) |
 | **Hosting** | Railway (API + Postgres + MongoDB, one project) · Vercel (frontend, edge CDN) |
-| **Testing** | Django `TestCase` / DRF `APITestCase` — 379 tests, unit + integration |
+| **Testing** | Django `TestCase` / DRF `APITestCase` — 383 tests, unit + integration |
 
 ## How it works
 

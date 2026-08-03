@@ -126,7 +126,7 @@ the values from `.env.example`:
 | `JWT_ACCESS_EXPIRATION_SECONDS` / `JWT_REFRESH_EXPIRATION_SECONDS` | Defaults (`3600` / `604800`) are usually fine |
 | `CORS_ORIGINS` | Your deployed frontend's real origin, e.g. `https://yourdomain.com` |
 | `GEMINI_API_KEY` | From [Google AI Studio](https://aistudio.google.com/apikey) — required for style generation + resume import |
-| `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` | From your Cloudinary dashboard — required for file uploads |
+| `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` | From your Cloudinary dashboard — required for file uploads. Newer accounts also block direct delivery of PDF/ZIP files by default (a 401 on the resume download link) — enable **Settings → Security → "Allow delivery of PDF and ZIP files"** in the Cloudinary console |
 | `GITHUB_CLIENT_ID` / `GITHUB_CLIENT_SECRET` | From a GitHub OAuth App (github.com/settings/developers) |
 | `GITHUB_REDIRECT_URI` | `https://<your-api-domain>/api/github/callback` — must exactly match the OAuth App's callback URL |
 | `GITHUB_FRONTEND_SUCCESS_URL` | Your deployed frontend's real origin |
