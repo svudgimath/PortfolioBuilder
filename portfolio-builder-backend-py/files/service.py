@@ -43,6 +43,12 @@ def store(data: bytes, filename: str, declared_content_type: str | None, user_id
     options = {
         "resource_type": resource_type,
         "folder": f"dzigned/users/{user_id}",
+        # We upload raw bytes, not a file-like object with its own .name, so
+        # use_filename has nothing to derive a name from unless we hand it
+        # the original filename explicitly. Without this, Cloudinary falls
+        # back to a generic name — and for "raw" delivery specifically, that
+        # also means no extension, so downloaded PDFs lose their filename.
+        "filename": filename,
         "use_filename": True,
         "unique_filename": True,
         "overwrite": False,

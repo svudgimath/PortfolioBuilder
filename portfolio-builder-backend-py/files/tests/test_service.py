@@ -39,6 +39,7 @@ class StoreTests(SimpleTestCase):
         _, kwargs = mock_upload.call_args
         self.assertEqual(kwargs["resource_type"], "image")
         self.assertEqual(kwargs["folder"], "dzigned/users/user-123")
+        self.assertEqual(kwargs["filename"], "photo.jpg")
         self.assertTrue(kwargs["use_filename"])
         self.assertTrue(kwargs["unique_filename"])
         self.assertFalse(kwargs["overwrite"])
@@ -57,6 +58,9 @@ class StoreTests(SimpleTestCase):
 
         _, kwargs = mock_upload.call_args
         self.assertEqual(kwargs["resource_type"], "raw")
+        # Raw delivery bakes the filename (extension included) into the public
+        # ID itself — without passing it explicitly, downloads lose their name.
+        self.assertEqual(kwargs["filename"], "resume.pdf")
 
     def test_store_rejects_corrupted_bytes_before_calling_cloudinary(self):
         with patch("files.service.cloudinary.uploader.upload") as mock_upload:
