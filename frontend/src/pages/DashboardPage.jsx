@@ -4,6 +4,7 @@ import { getDashboard } from '../api/dashboard'
 import AuthContext from '../auth/AuthContext'
 import { Pencil, Zap, ExternalLink, Check, ArrowRight, Sparkles, FileText } from 'lucide-react'
 import ResumeImportModal from '../components/guided/ResumeImportModal'
+import UserMenu from '../components/layout/UserMenu'
 
 const ALL_SECTIONS = [
   { key: 'meta',           label: 'Meta'         },
@@ -25,11 +26,6 @@ function timeGreeting() {
   if (h < 12) return 'Good morning'
   if (h < 17) return 'Good afternoon'
   return 'Good evening'
-}
-
-function getInitials(name) {
-  if (!name) return '?'
-  return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2)
 }
 
 export default function DashboardPage() {
@@ -73,12 +69,7 @@ export default function DashboardPage() {
             <img src="/dzigned_logo.png" alt="" className="w-6 h-6 object-contain" />
             Dzigned
           </span>
-          <div
-            className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center text-xs font-bold select-none"
-            style={{ color: 'var(--color-bg)' }}
-          >
-            {getInitials(user?.name)}
-          </div>
+          <UserMenu />
         </div>
 
         {/* ── Hero greeting card ── */}
