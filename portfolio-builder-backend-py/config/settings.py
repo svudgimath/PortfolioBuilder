@@ -74,7 +74,11 @@ MONGODB_URI = env(
 
 # ── LLM style generation (Gemini) ───────────────────────────────────────────
 GEMINI_API_KEY = env("GEMINI_API_KEY", default="")
-LLM_DEFAULT_MODEL = env("LLM_DEFAULT_MODEL", default="gemini-2.5-flash")
+# "gemini-flash-latest" is a self-updating alias rather than a dated model name
+# (e.g. "gemini-2.5-flash") — dated models get retired from new API keys on
+# Google's own schedule, which took resume import down in production with a
+# 404 ("no longer available to new users") once this key stopped being new.
+LLM_DEFAULT_MODEL = env("LLM_DEFAULT_MODEL", default="gemini-flash-latest")
 LLM_TIMEOUT_SECONDS = env.int("LLM_TIMEOUT_SECONDS", default=60)
 LLM_RATE_PER_MINUTE = env.int("LLM_RATE_PER_MINUTE", default=5)
 LLM_RATE_PER_DAY = env.int("LLM_RATE_PER_DAY", default=5)
