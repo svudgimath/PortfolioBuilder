@@ -116,7 +116,10 @@ def publish(user_id: str, repo_name: str, mode: str) -> PublishedPortfolio:
     if is_full_publish:
         _enable_pages(token, owner, repo_name)
 
-    pages_url = f"https://{owner}.github.io/{repo_name}"
+    # Trailing slash matters: without it, the browser resolves the published
+    # SPA's relative asset URLs (./assets/...) against the parent path instead
+    # of the repo path, and every script/style 404s.
+    pages_url = f"https://{owner}.github.io/{repo_name}/"
 
     return _save_published_portfolio(user_id, repo_name, owner, pages_url)
 

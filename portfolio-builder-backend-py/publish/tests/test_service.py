@@ -173,7 +173,7 @@ class PublishWorkflowTests(PublishServiceTestsBase):
         self.assertGreater(mock_upsert.call_count, 1)
         self.assertEqual(published.repo_name, "new-repo")
         self.assertEqual(published.repo_url, "https://github.com/octocat/new-repo")
-        self.assertEqual(published.pages_url, "https://octocat.github.io/new-repo")
+        self.assertEqual(published.pages_url, "https://octocat.github.io/new-repo/")
         self.assertTrue(published.pages_enabled)
 
     @patch("publish.service.github_api.enable_pages")

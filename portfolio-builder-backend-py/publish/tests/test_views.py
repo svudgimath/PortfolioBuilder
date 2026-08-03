@@ -126,7 +126,7 @@ class PublishViewTests(PublishViewTestsBase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["repoName"], "new-repo")
         self.assertEqual(response.data["repoUrl"], "https://github.com/octocat/new-repo")
-        self.assertEqual(response.data["pagesUrl"], "https://octocat.github.io/new-repo")
+        self.assertEqual(response.data["pagesUrl"], "https://octocat.github.io/new-repo/")
         self.assertIn("lastPublishedAt", response.data)
 
 
