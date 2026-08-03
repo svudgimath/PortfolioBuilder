@@ -15,4 +15,4 @@ EXPOSE 8080
 # Explicit sh -c (exec form) so ${PORT} still expands — most PaaS platforms
 # (Railway, Render, Fly.io, Heroku-style) inject PORT dynamically — without
 # Docker's implicit shell-wrapping warning for a bare shell-form CMD.
-CMD ["sh", "-c", "gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8080} --workers 3"]
+CMD ["sh", "-c", "gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8080} --workers 3 --access-logfile - --error-logfile -"]
