@@ -5,6 +5,17 @@
     <link rel="icon" type="image/png" href="/dzigned_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#13111F" />
+
+    <!-- Preconnect + load fonts as early as possible, before the app bundle even
+         starts parsing — a CSS @import here would only be discovered after the
+         stylesheet itself loads, arriving late enough to cause a visible layout
+         shift when the fallback font swaps to Sora/Inter mid-render. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <meta name="description" content="Dzigned — build a portfolio in minutes and publish it to GitHub Pages. Guided editor, live preview, AI-generated styles." />
 
     <!-- Open Graph -->
