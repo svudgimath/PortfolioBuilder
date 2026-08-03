@@ -1,0 +1,234 @@
+{
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "displayName": { "type": "string", "maxLength": 200 },
+        "title":       { "type": "string", "maxLength": 200 },
+        "shortIntro":  { "type": "string", "maxLength": 280 },
+        "location":    { "type": "string", "maxLength": 200 },
+        "website":     { "type": "string", "maxLength": 1000 },
+        "openToWork":  { "type": "boolean" }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "socials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": { "type": "string", "maxLength": 100 },
+              "url":      { "type": "string", "maxLength": 1000 }
+            }
+          }
+        }
+      }
+    },
+    "about": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "description": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 5000 }
+        },
+        "whatIDo": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "heading": { "type": "string", "maxLength": 200 },
+              "brief":   { "type": "string", "maxLength": 500 }
+            }
+          }
+        },
+        "highlights": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name":  { "type": "string", "maxLength": 200 },
+              "quant": { "type": "string", "maxLength": 100 }
+            }
+          }
+        },
+        "interests": {
+          "type": "array",
+          "items": { "type": "string", "maxLength": 100 }
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "categorized": { "type": "boolean" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": { "type": "string", "maxLength": 100 },
+              "tags": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 100 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "company":    { "type": "string", "maxLength": 200 },
+              "role":       { "type": "string", "maxLength": 200 },
+              "startDate":  { "type": "string", "maxLength": 100 },
+              "endDate":    { "type": "string", "maxLength": 100 },
+              "current":    { "type": "boolean" },
+              "location":   { "type": "string", "maxLength": 200 },
+              "description": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 2000 }
+              },
+              "tags": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 100 }
+              },
+              "companyUrl": { "type": "string", "maxLength": 1000 }
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "institution":  { "type": "string", "maxLength": 200 },
+              "degree":       { "type": "string", "maxLength": 200 },
+              "fieldOfStudy": { "type": "string", "maxLength": 200 },
+              "startDate":    { "type": "string", "maxLength": 100 },
+              "endDate":      { "type": "string", "maxLength": 100 },
+              "location":     { "type": "string", "maxLength": 200 },
+              "grade":        { "type": "string", "maxLength": 200 },
+              "description": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 2000 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "projectName": { "type": "string", "maxLength": 200 },
+              "description": { "type": "string", "maxLength": 5000 },
+              "tags": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 100 }
+              },
+              "liveUrl": { "type": "string", "maxLength": 1000 },
+              "repoUrl": { "type": "string", "maxLength": 1000 }
+            }
+          }
+        }
+      }
+    },
+    "certifications": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name":          { "type": "string", "maxLength": 200 },
+              "issuer":        { "type": "string", "maxLength": 200 },
+              "dateIssued":    { "type": "string", "maxLength": 100 },
+              "expiryDate":    { "type": "string", "maxLength": 100 },
+              "credentialUrl": { "type": "string", "maxLength": 1000 },
+              "description":   { "type": "string", "maxLength": 5000 }
+            }
+          }
+        }
+      }
+    },
+    "research": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title":       { "type": "string", "maxLength": 300 },
+              "authors": {
+                "type": "array",
+                "items": { "type": "string", "maxLength": 200 }
+              },
+              "publishedIn": { "type": "string", "maxLength": 200 },
+              "date":        { "type": "string", "maxLength": 100 },
+              "description": { "type": "string", "maxLength": 5000 },
+              "url":         { "type": "string", "maxLength": 1000 },
+              "doi":         { "type": "string", "maxLength": 200 }
+            }
+          }
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "email":   { "type": "string", "maxLength": 255 },
+        "phone":   { "type": "string", "maxLength": 50 },
+        "heading": { "type": "string", "maxLength": 200 },
+        "tagline": { "type": "string", "maxLength": 500 },
+        "socials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "platform": { "type": "string", "maxLength": 100 },
+              "url":      { "type": "string", "maxLength": 1000 }
+            }
+          }
+        }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "nullable": true,
+      "properties": {
+        "customNote": { "type": "string", "maxLength": 500 }
+      }
+    }
+  }
+}

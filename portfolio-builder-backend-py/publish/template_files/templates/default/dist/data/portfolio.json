@@ -1,0 +1,348 @@
+{
+  "meta": {
+    "displayName": "Alex Carter",
+    "title": "Full Stack Engineer",
+    "shortIntro": "I craft scalable web applications and love turning complex problems into clean, elegant solutions. Passionate about open source and developer tooling.",
+    "location": "San Francisco, CA",
+    "profilePhoto": "/assets/images/profile_photo-1.jpeg",
+    "openToWork": true,
+    "stats": [
+      { "value": "5+",  "label": "Years experience" },
+      { "value": "30+", "label": "Projects shipped" },
+      { "value": "200+", "label": "OSS contributions" }
+    ]
+  },
+
+  "hero": {
+    "greeting": "Hi there! I'm",
+    "showProfilePhoto": true,
+    "cta": {
+      "primary":   { "label": "View My Work", "href": "#projects" },
+      "secondary": { "label": "Get In Touch", "href": "#contact" }
+    },
+    "socials": [
+      { "platform": "github",   "url": "https://github.com/alexcarter" },
+      { "platform": "linkedin", "url": "https://linkedin.com/in/alexcarter" },
+      { "platform": "twitter",  "url": "https://twitter.com/alexcarter" }
+    ]
+  },
+
+  "contact": {
+    "sectionLabel": "Get In Touch",
+    "heading": "Let's build something great together.",
+    "tagline": "I'm open to new opportunities, collaborations and interesting projects. Drop me a message and I'll get back to you.",
+    "email": "alex.carter@gmail.com",
+    "phone": "+1 415 234 5678",
+    "socials": [
+      { "platform": "github", "url": "https://github.com/alexcarter" },
+      { "platform": "linkedin", "url": "https://linkedin.com/in/alexcarter" },
+      { "platform": "twitter", "url": "https://twitter.com/alexcarter" },
+      { "platform": "instagram", "url": "https://instagram.com/alexcarter" },
+      { "platform": "facebook", "url": "https://facebook.com/alexcarter" },
+      { "platform": "leetcode", "url": "https://leetcode.com/alexcarter" }
+    ]
+  },
+
+  "about": {
+    "sectionLabel": "About Me",
+    "sectionTitle": "A little about who I am",
+    "description": [
+      "I am a Full Stack Engineer with over 5 years of experience building scalable web applications and developer tools. I enjoy working across the entire stack — from designing robust backend systems to crafting pixel-perfect user interfaces.",
+      "I am deeply passionate about open source, clean architecture, and writing code that other developers love to work with. When I am not coding I am probably contributing to a side project or exploring new technologies."
+    ],
+    "whatIDo": [
+      { "heading": "Backend Development", "brief": "Building scalable APIs and microservices using Spring Boot and Node.js" },
+      { "heading": "Frontend Development", "brief": "Crafting responsive and accessible UIs with React and Tailwind CSS" },
+      { "heading": "Cloud & DevOps", "brief": "Deploying and managing applications on AWS using Docker and Kubernetes" },
+      { "heading": "Open Source", "brief": "Actively contributing to and maintaining open source developer tools" }
+    ],
+    "highlights": [
+      { "name": "Years of Experience", "quant": "5+" },
+      { "name": "Projects Delivered", "quant": "30+" },
+      { "name": "Open Source Contributions", "quant": "200+" },
+      { "name": "Happy Clients", "quant": "15+" }
+    ],
+    "interests": ["Chess", "Hiking", "Mechanical Keyboards", "Science Fiction", "Photography"]
+  },
+
+  "experience": {
+    "sectionLabel": "Work Experience",
+    "sectionTitle": "My professional journey so far",
+    "items": [
+      {
+        "company": "Google",
+        "role": "Senior Software Engineer",
+        "startDate": "Jan 2022",
+        "endDate": "Present",
+        "location": "San Francisco, CA",
+        "description": [
+          "Led development of a distributed data pipeline processing 10M+ events daily",
+          "Architected migration from monolith to microservices reducing deployment time by 60%",
+          "Mentored a team of 4 junior engineers and conducted regular code reviews"
+        ],
+        "tags": ["Java", "Spring Boot", "Kubernetes", "GCP", "Kafka"],
+        "companyLogo": "/assets/images/project1.jpeg"
+      },
+      {
+        "company": "Airbnb",
+        "role": "Software Engineer",
+        "startDate": "Jun 2019",
+        "endDate": "Dec 2021",
+        "location": "Remote",
+        "description": [
+          "Built and maintained RESTful APIs serving 5M+ monthly active users",
+          "Improved frontend performance by 40% through lazy loading and code splitting",
+          "Collaborated with product and design teams to deliver 3 major feature releases"
+        ],
+        "tags": ["React", "Node.js", "PostgreSQL", "Redis", "AWS"],
+        "companyLogo": "/assets/images/project1.jpeg"
+      },
+      {
+        "company": "Startup Inc.",
+        "role": "Junior Software Engineer",
+        "startDate": "Aug 2018",
+        "endDate": "May 2019",
+        "location": "New York, NY",
+        "description": [
+          "Developed new features for a SaaS product used by 500+ businesses",
+          "Wrote unit and integration tests increasing code coverage from 40% to 80%"
+        ],
+        "tags": ["React", "Node.js", "MongoDB", "Docker"],
+        "companyLogo": "/assets/images/project1.jpeg"
+      }
+    ]
+  },
+
+  "education": {
+    "sectionLabel": "Education",
+    "sectionTitle": "My academic background",
+    "items": [
+      {
+        "institution": "Massachusetts Institute of Technology",
+        "degree": "Master of Science",
+        "fieldOfStudy": "Computer Science",
+        "startDate": "Sep 2016",
+        "endDate": "May 2018",
+        "location": "Cambridge, MA",
+        "grade": "4.0 GPA",
+        "description": [
+          "Specialized in Distributed Systems and Cloud Computing",
+          "Published research on scalable microservices architecture patterns",
+          "Teaching assistant for Advanced Algorithms course"
+        ],
+        "tags": ["Distributed Systems", "Cloud Computing", "Algorithms", "Research"],
+        "logo": "/assets/images/project1.jpeg"
+      },
+      {
+        "institution": "University of California, Berkeley",
+        "degree": "Bachelor of Science",
+        "fieldOfStudy": "Computer Science",
+        "startDate": "Aug 2012",
+        "endDate": "May 2016",
+        "location": "Berkeley, CA",
+        "grade": "3.9 GPA",
+        "description": [
+          "Graduated with Highest Honors",
+          "Led the university coding club with 200+ active members",
+          "Relevant coursework: Data Structures, Operating Systems, Machine Learning, Database Systems"
+        ],
+        "tags": ["Data Structures", "Operating Systems", "Machine Learning", "Database Systems"],
+        "logo": "/assets/images/project1.jpeg"
+      }
+    ]
+  },
+
+  "skills": {
+    "sectionLabel": "Skills",
+    "sectionTitle": "What I bring to the table",
+    "categorized": true,
+    "items": [
+      {
+        "category": "Frontend",
+        "tags": ["React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5", "CSS3"]
+      },
+      {
+        "category": "Backend",
+        "tags": ["Java", "Spring Boot", "Node.js", "Python", "REST APIs", "GraphQL"]
+      },
+      {
+        "category": "Databases",
+        "tags": ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Elasticsearch"]
+      },
+      {
+        "category": "Cloud & DevOps",
+        "tags": ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Terraform"]
+      },
+      {
+        "category": "Tools & Practices",
+        "tags": ["Git", "Agile", "TDD", "System Design", "Code Review", "Microservices"]
+      }
+    ]
+  },
+
+  "projects": {
+    "sectionLabel": "Projects",
+    "sectionTitle": "Things I have built",
+    "items": [
+      {
+        "projectName": "Portfolio Builder",
+        "description": "A full stack web app that generates and deploys personal portfolio sites to GitHub Pages in minutes. Supports dynamic styles and runtime data loading via JSON, making each portfolio unique.",
+        "tags": ["React", "Spring Boot", "PostgreSQL", "MongoDB", "GitHub API"],
+        "liveUrl": "https://portfoliobuilder.dev",
+        "repoUrl": "https://github.com/alexcarter/portfolio-builder",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "startDate": "Jan 2024",
+        "endDate": "Present"
+      },
+      {
+        "projectName": "DevCollab",
+        "description": "A real time collaborative coding platform with built-in video chat and code execution support. Supports 10+ programming languages and allows teams to code together with zero setup.",
+        "tags": ["React", "Node.js", "WebSockets", "Docker", "Redis"],
+        "liveUrl": "https://devcollab.io",
+        "repoUrl": "https://github.com/alexcarter/devcollab",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "startDate": "Mar 2023",
+        "endDate": "Nov 2023"
+      },
+      {
+        "projectName": "SmartSpend",
+        "description": "A personal finance tracker that uses ML to categorize expenses and predict monthly spending. Integrated with major banks via Plaid API with support for multi-currency accounts.",
+        "tags": ["React", "Python", "FastAPI", "PostgreSQL", "Plaid API", "scikit-learn"],
+        "liveUrl": "https://smartspend.app",
+        "repoUrl": "https://github.com/alexcarter/smartspend",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "startDate": "Jun 2022",
+        "endDate": "Jan 2023"
+      },
+      {
+        "projectName": "OpenSearch CLI",
+        "description": "A developer CLI tool for searching, filtering and managing Elasticsearch indices from the terminal. Used by 500+ developers with 1000+ GitHub stars.",
+        "tags": ["Python", "Elasticsearch", "CLI", "Open Source"],
+        "liveUrl": null,
+        "repoUrl": "https://github.com/alexcarter/opensearch-cli",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "startDate": "Jan 2022",
+        "endDate": "Mar 2022"
+      }
+    ]
+  },
+
+  "certifications": {
+    "sectionLabel": "Certifications & Achievements",
+    "sectionTitle": "Credentials and recognition",
+    "items": [
+      {
+        "name": "AWS Solutions Architect — Professional",
+        "description": "Validates advanced technical skills in designing distributed systems and scalable architecture on AWS.",
+        "issuer": "Amazon Web Services",
+        "dateIssued": "Mar 2023",
+        "expiryDate": "Mar 2026",
+        "credentialUrl": "https://aws.amazon.com/verification/alex-cart-123",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "tags": ["Cloud", "AWS", "Architecture", "DevOps"]
+      },
+      {
+        "name": "Google Cloud Professional Data Engineer",
+        "description": "Demonstrates ability to design and build data processing systems and ML models on Google Cloud Platform.",
+        "issuer": "Google Cloud",
+        "dateIssued": "Aug 2022",
+        "expiryDate": "Aug 2024",
+        "credentialUrl": "https://cloud.google.com/certification/verify/alex-carter",
+        "thumbnail": "/assets/images/cert2.png",
+        "tags": ["GCP", "Data Engineering", "Machine Learning"]
+      },
+      {
+        "name": "1st Place — HackMIT 2022",
+        "description": "Won first place among 300+ teams for building an AI powered accessibility tool for visually impaired developers.",
+        "issuer": "MIT",
+        "dateIssued": "Oct 2022",
+        "expiryDate": null,
+        "credentialUrl": "https://hackmit.org/2022/winners",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "tags": ["Hackathon", "AI", "Accessibility"]
+      },
+      {
+        "name": "Kubernetes Administrator (CKA)",
+        "description": "Certifies proficiency in Kubernetes cluster administration, networking, storage and troubleshooting.",
+        "issuer": "Cloud Native Computing Foundation",
+        "dateIssued": "Jan 2022",
+        "expiryDate": "Jan 2025",
+        "credentialUrl": "https://cncf.io/certification/verify/alex-carter",
+        "thumbnail": "/assets/images/project1.jpeg",
+        "tags": ["Kubernetes", "DevOps", "Cloud Native"]
+      }
+    ]
+  },
+
+  "research": {
+    "sectionLabel": "Research & Publications",
+    "sectionTitle": "My contributions to the field",
+    "items": [
+      {
+        "title": "Scalable Microservices Architecture Patterns for Cloud Native Applications",
+        "authors": ["Alex Carter", "Dr. Sarah Mitchell", "James Wong"],
+        "publishedIn": "IEEE Transactions on Software Engineering",
+        "date": "Jun 2023",
+        "description": "An in depth exploration of architectural patterns for building resilient and scalable microservices at enterprise scale, with benchmarks comparing performance across AWS, GCP and Azure.",
+        "tags": ["Microservices", "Cloud Native", "Distributed Systems", "Architecture"],
+        "url": "https://ieeexplore.ieee.org/paper/scalable-microservices",
+        "doi": "10.1109/TSE.2023.123456"
+      },
+      {
+        "title": "Real Time Collaborative Code Execution in Browser Environments",
+        "authors": ["Alex Carter", "Prof. David Kim"],
+        "publishedIn": "ACM Conference on Computer-Supported Cooperative Work",
+        "date": "Nov 2022",
+        "description": "Presents a novel approach to low latency collaborative code execution in the browser using WebSockets and operational transformation, evaluated across 10 programming languages.",
+        "tags": ["WebSockets", "Collaborative Tools", "Browser", "Real Time Systems"],
+        "url": "https://dl.acm.org/paper/realtime-collaborative-code",
+        "doi": "10.1145/CSCW.2022.654321"
+      },
+      {
+        "title": "Machine Learning Approaches for Personal Finance Anomaly Detection",
+        "authors": ["Alex Carter"],
+        "publishedIn": "arXiv Preprint",
+        "date": "Mar 2022",
+        "description": "Proposes a lightweight ML pipeline for detecting anomalous spending patterns in personal finance data with 94% accuracy using scikit-learn and anonymized transaction datasets.",
+        "tags": ["Machine Learning", "Finance", "Anomaly Detection", "scikit-learn"],
+        "url": "https://arxiv.org/abs/2203.12345",
+        "doi": null
+      }
+    ]
+  },
+
+  "testimonials": {
+    "sectionLabel": "Testimonials",
+    "sectionTitle": "What people say about me",
+    "items": [
+      {
+        "name": "Sarah Mitchell",
+        "role": "Engineering Manager",
+        "company": "Google",
+        "message": "Alex is one of the most talented engineers I have had the pleasure of managing. His ability to break down complex problems and deliver clean, scalable solutions consistently impressed the entire team. A true asset to any engineering organization.",
+        "avatar": "/assets/images/project1.jpeg",
+        "linkedinUrl": "https://linkedin.com/in/sarahmitchell"
+      },
+      {
+        "name": "David Kim",
+        "role": "Principal Engineer",
+        "company": "Airbnb",
+        "message": "Working with Alex was a fantastic experience. He brought a level of technical depth and collaborative energy that elevated the whole team. His work on our API infrastructure was instrumental in scaling our platform.",
+        "avatar": "/assets/images/project1.jpeg",
+        "linkedinUrl": "https://linkedin.com/in/davidkim"
+      },
+      {
+        "name": "Priya Sharma",
+        "role": "Product Manager",
+        "company": "Airbnb",
+        "message": "Alex has a rare ability to bridge the gap between engineering and product. He always asked the right questions, pushed back constructively and delivered features that users genuinely loved. I would work with him again in a heartbeat.",
+        "avatar": "/assets/images/project1.jpeg",
+        "linkedinUrl": "https://linkedin.com/in/priyasharma"
+      }
+    ]
+  },
+
+  "footer": {
+    "customNote": "Open to work — let's connect!"
+  }
+}

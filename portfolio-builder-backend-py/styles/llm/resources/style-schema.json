@@ -1,0 +1,134 @@
+{
+  "type": "object",
+  "required": [
+    "theme",
+    "typography",
+    "backdrop",
+    "depth",
+    "surface",
+    "components",
+    "sections",
+    "motion"
+  ],
+  "properties": {
+    "theme": {
+      "type": "object",
+      "required": ["mode", "colors"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["dark", "light"],
+          "description": "dark or light. Drives shadow tints, grain blend, and light calibrations. Match your bg lightness."
+        },
+        "colors": {
+          "type": "object",
+          "required": ["bg", "bgElevated", "accent1", "accent2", "text", "textDim", "textMuted", "shadow"],
+          "properties": {
+            "bg": { "type": "string", "description": "Page background. Hex or rgba." },
+            "bgElevated": { "type": "string", "description": "Card / raised surface color. Must visibly differ from bg." },
+            "accent1": { "type": "string", "description": "Primary accent (links, gradient start)." },
+            "accent2": { "type": "string", "description": "Secondary accent (gradient end). For gradient features keep hue distance >= 30 deg from accent1." },
+            "text": { "type": "string", "description": "Primary text. Must hit WCAG AA (>= 4.5:1) against bg." },
+            "textDim": { "type": "string", "description": "Body / secondary text. Must be >= 4:1 against bg." },
+            "textMuted": { "type": "string", "description": "Tertiary text (labels, dates). Must be >= 3:1 against bg AND a perceptible step between textDim and bg. NEVER near bg." },
+            "shadow": { "type": "string", "description": "Shadow color. Black-based on dark; for neon themes a low-opacity accent-tinted shadow reads better." }
+          }
+        }
+      }
+    },
+    "typography": {
+      "type": "object",
+      "required": ["headingFont", "bodyFont", "googleFontsUrl", "scale", "weight", "headingCase"],
+      "properties": {
+        "headingFont": { "type": "string", "description": "Any Google Font family name. No allow-list - vary your choice across users to match domain and tone." },
+        "bodyFont": { "type": "string", "description": "Any Google Font family - must be highly legible. Don't pair two display fonts." },
+        "googleFontsUrl": { "type": "string", "description": "Valid Google Fonts CSS URL that loads BOTH families with the weights you'll use (heading ~400-800, body ~300-500)." },
+        "scale": { "type": "string", "enum": ["compact", "balanced", "expressive"], "description": "compact 0.9x (dense), balanced 1x, expressive 1.15x (editorial)." },
+        "weight": { "type": "string", "enum": ["light", "regular", "strong"], "description": "Heading weight. light 300 (elegant), regular 400, strong 700 (bold/tech)." },
+        "headingCase": { "type": "string", "enum": ["none", "uppercase-tracked"], "description": "uppercase-tracked adds uppercase + letter-spacing to labels & headings; AVOID with serif headings." }
+      }
+    },
+    "backdrop": {
+      "type": "object",
+      "required": ["base", "pattern", "glow", "texture", "vignette"],
+      "properties": {
+        "base": { "type": "string", "enum": ["solid", "gradient-tone", "duotone"], "description": "solid (flat - looks like no backdrop, avoid pairing with all-none); gradient-tone (subtle same-hue light); duotone (accent wash into bg)." },
+        "pattern": { "type": "string", "enum": ["none", "grid", "dots", "topo"], "description": "Surface pattern, edge-masked. topo currently renders as fine dots." },
+        "glow": { "type": "string", "enum": ["none", "corner", "spotlight"], "description": "corner = top-right accent glow; spotlight = top-center beam." },
+        "texture": { "type": "string", "enum": ["none", "grain"], "description": "grain = subtle film grain overlay." },
+        "vignette": { "type": "boolean", "description": "Darkens edges. Don't stack with grain + pattern + glow simultaneously (reads noisy)." }
+      }
+    },
+    "depth": {
+      "type": "object",
+      "required": ["elevation", "shadowQuality", "surfaceContrast"],
+      "properties": {
+        "elevation": { "type": "string", "enum": ["flat", "ambient", "layered"], "description": "flat (no shadow, borders separate); ambient (soft diffuse); layered (stronger lift)." },
+        "shadowQuality": { "type": "string", "enum": ["soft", "crisp"], "description": "soft = big blur low opacity; crisp = tight defined." },
+        "surfaceContrast": { "type": "string", "enum": ["low", "medium", "high"], "description": "Amplifies bg <-> bgElevated gap. low = barely lift; high = clearly distinct." }
+      }
+    },
+    "surface": {
+      "type": "object",
+      "required": ["radius", "borderWeight", "contentWidth"],
+      "properties": {
+        "radius": { "type": "string", "enum": ["sharp", "soft", "round"], "description": "Global rounding for cards/inputs/thumbnails. ~2px / ~14px / ~26px. Tags always pill." },
+        "borderWeight": { "type": "string", "enum": ["none", "hairline", "defined"], "description": "Card border weight. 0 / 0.5px / 1px." },
+        "contentWidth": { "type": "string", "enum": ["narrow", "standard", "wide"], "description": "Reserved - not yet wired. Safe to emit, no visual effect yet." }
+      }
+    },
+    "components": {
+      "type": "object",
+      "required": ["card", "tag", "button", "sectionLabel", "sectionHeading", "sectionTitle", "socialIcon", "avatar"],
+      "properties": {
+        "card": { "type": "string", "enum": ["border", "shadow", "glass", "tinted", "clay"], "description": "border (border+bg); shadow (elevation); glass (frosted blur); tinted (accent-tinted bg); clay (accent bg + inset highlight)." },
+        "tag": { "type": "string", "enum": ["outline", "subtle", "filled", "shadow"], "description": "outline; subtle (translucent); filled (accent gradient tint); shadow." },
+        "button": {
+          "type": "object",
+          "required": ["primary", "secondary"],
+          "properties": {
+            "primary": { "type": "string", "enum": ["filled", "gradient"], "description": "filled (solid accent); gradient (accent1->accent2, requires >=30 deg hue distance)." },
+            "secondary": { "type": "string", "enum": ["outline", "ghost"] }
+          }
+        },
+        "sectionLabel": { "type": "string", "enum": ["line", "badge", "numbered"], "description": "line (accent rule prefix); badge (pill); numbered (auto 01, 02...)." },
+        "sectionHeading": { "type": "string", "enum": ["stacked", "centered", "sidebar", "divider"], "description": "stacked (label+title vertically — default); centered (label+title centred); sidebar (label/title in side column); divider (full-width rule separates heading)." },
+        "sectionTitle": { "type": "string", "enum": ["plain", "gradient", "outline", "highlight"], "description": "plain (regular text); gradient (accent1->accent2 fill); outline (stroke text); highlight (accent-tinted bg behind title)." },
+        "socialIcon": { "type": "string", "enum": ["icon", "outline", "filled"], "description": "icon (bare); outline (circle outline); filled (circle fill)." },
+        "avatar": {
+          "type": "object",
+          "required": ["shape", "frame"],
+          "properties": {
+            "shape": { "type": "string", "enum": ["circle", "rounded-square", "blob"], "description": "circle; rounded-square; blob (organic shape)." },
+            "frame": { "type": "string", "enum": ["none", "ring", "gradient-ring", "glow", "spotlight", "backdrop", "geometric-backdrop", "dual-tone"], "description": "Avatar treatment. dual-tone RECOLORS the actual photo - only for strongly stylized themes with vivid accents (saturation >= 0.4)." }
+          }
+        }
+      }
+    },
+    "sections": {
+      "type": "object",
+      "required": ["hero", "experience", "education", "projects", "certifications", "research", "testimonials", "contact"],
+      "properties": {
+        "hero": { "type": "string", "enum": ["split", "overlay-typographic", "editorial-masthead", "manifesto"], "description": "Hero layout. split needs profile photo; overlay-typographic needs title<=30 chars; manifesto needs shortIntro>=30 chars. editorial-masthead is the universal fallback — no data requirements." },
+        "experience": { "type": "string", "enum": ["timeline", "split-rail", "cards", "compact"], "description": "timeline (dot+rail, >=2 items); split-rail (alternating, >=3 items, premium); cards; compact." },
+        "education": { "type": "string", "enum": ["cards", "compact"] },
+        "projects": { "type": "string", "enum": ["grid", "list", "featured", "bento", "alternating"], "description": "bento needs all items to have thumbnails; featured needs >=2; alternating 2-5." },
+        "certifications": { "type": "string", "enum": ["list", "grid", "badges"], "description": "badges needs all items to have thumbnails." },
+        "research": { "type": "string", "enum": ["list", "cards", "compact"], "description": "cards needs >=2 items." },
+        "testimonials": { "type": "string", "enum": ["grid", "stack"], "description": "grid needs >=3 items; otherwise stack." },
+        "contact": { "type": "string", "enum": ["centered", "card"] }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "required": ["intensity", "entrance", "cardHover", "linkHover", "counters"],
+      "properties": {
+        "intensity": { "type": "string", "enum": ["none", "subtle", "expressive"], "description": "none disables all motion; expressive gates extras like hero-name glow." },
+        "entrance": { "type": "string", "enum": ["fade", "slide-up", "stagger", "scale"] },
+        "cardHover": { "type": "string", "enum": ["none", "lift", "accent-border"] },
+        "linkHover": { "type": "string", "enum": ["none", "underline", "arrow"], "description": "arrow adds a moving arrow to primary buttons." },
+        "counters": { "type": "string", "enum": ["off", "on"], "description": "Animate stat numbers counting up. Only meaningful if about.highlights exists." }
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "bg":         "#060910",
+      "bgElevated": "#0D1117",
+      "accent1":    "#00E5FF",
+      "accent2":    "#BF5AF2",
+      "text":       "#E8F4F8",
+      "textDim":    "#7EA8BE",
+      "textMuted":  "#557585",
+      "shadow":     "rgba(0, 229, 255, 0.12)"
+    }
+  },
+
+  "typography": {
+    "headingFont":    "Space Grotesk",
+    "bodyFont":       "Inter",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap",
+    "scale":          "balanced",
+    "weight":         "strong",
+    "headingCase":    "uppercase-tracked"
+  },
+
+  "backdrop": {
+    "base":     "duotone",
+    "pattern":  "grid",
+    "glow":     "spotlight",
+    "texture":  "none",
+    "vignette": true
+  },
+
+  "depth": {
+    "elevation":       "layered",
+    "shadowQuality":   "crisp",
+    "surfaceContrast": "high"
+  },
+
+  "surface": {
+    "radius":       "sharp",
+    "borderWeight": "defined",
+    "contentWidth": "standard"
+  },
+
+  "components": {
+    "card":         "glass",
+    "tag":          "filled",
+    "button":       { "primary": "gradient", "secondary": "outline" },
+    "sectionLabel": "badge",
+    "socialIcon":   "filled",
+    "avatar":       { "shape": "blob", "frame": "dual-tone" }
+  },
+
+  "sections": {
+    "hero":           "manifesto",
+    "experience":     "cards",
+    "education":      "cards",
+    "projects":       "featured",
+    "certifications": "badges",
+    "research":       "compact",
+    "testimonials":   "grid",
+    "contact":        "centered"
+  },
+
+  "motion": {
+    "intensity": "expressive",
+    "entrance":  "stagger",
+    "cardHover": "accent-border",
+    "linkHover": "arrow",
+    "counters":  "on"
+  }
+}

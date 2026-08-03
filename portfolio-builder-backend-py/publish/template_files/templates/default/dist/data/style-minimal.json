@@ -1,0 +1,72 @@
+{
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "bg":         "#111110",
+      "bgElevated": "#1C1C1A",
+      "accent1":    "#E8D5B0",
+      "accent2":    "#C4A882",
+      "text":       "#F5F0E8",
+      "textDim":    "#A8A395",
+      "textMuted":  "#6B665C",
+      "shadow":     "rgba(0, 0, 0, 0.6)"
+    }
+  },
+
+  "typography": {
+    "headingFont":    "DM Serif Display",
+    "bodyFont":       "DM Sans",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap",
+    "scale":          "balanced",
+    "weight":         "regular",
+    "headingCase":    "none"
+  },
+
+  "backdrop": {
+    "base":     "gradient-tone",
+    "pattern":  "none",
+    "glow":     "corner",
+    "texture":  "grain",
+    "vignette": false
+  },
+
+  "depth": {
+    "elevation":       "ambient",
+    "shadowQuality":   "soft",
+    "surfaceContrast": "medium"
+  },
+
+  "surface": {
+    "radius":       "soft",
+    "borderWeight": "hairline",
+    "contentWidth": "standard"
+  },
+
+  "components": {
+    "card":         "border",
+    "tag":          "outline",
+    "button":       { "primary": "filled", "secondary": "ghost" },
+    "sectionLabel": "line",
+    "socialIcon":   "icon",
+    "avatar":       { "shape": "circle", "frame": "ring" }
+  },
+
+  "sections": {
+    "hero":           "editorial-masthead",
+    "experience":     "compact",
+    "education":      "compact",
+    "projects":       "list",
+    "certifications": "list",
+    "research":       "list",
+    "testimonials":   "stack",
+    "contact":        "centered"
+  },
+
+  "motion": {
+    "intensity": "subtle",
+    "entrance":  "fade",
+    "cardHover": "lift",
+    "linkHover": "underline",
+    "counters":  "off"
+  }
+}

@@ -1,0 +1,27 @@
+# Backend
+portfolio-builder-backend/src/main/resources/application-local.properties
+target/
+build/
+.gradle/
+logs/
+
+# Frontend (scoped so backend classpath templates aren't accidentally ignored)
+node_modules/
+frontend/dist/
+.vite/
+templates/*/dist/
+templates/*/node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets / local overrides
+.env
+application-local.properties
+application-local.yml

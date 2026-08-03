@@ -1,0 +1,605 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DZIGNED — design tokens, single source of truth
+   ───────────────────────────────────────────────────────────────────────────
+   Matched to reference: near-black navy room, royal-blue primary, purple /
+   magenta gradient glow bleeding from the edges, white text. Components use
+   semantic token utilities only — never hardcoded colour.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Navy room — depth ladder ────────────────────────────────────────────── */
+  --color-bg:                    #13111F;
+  --color-bg-shell:              #1B1830;
+  --color-bg-surface:            #221F38;
+  --color-bg-surface-light:      #2A2746;
+  --color-bg-surface-soft:       #0E0C1A;
+  --color-bg-surface-elevated:   #332F56;
+
+  /* ── Elevation overlays — translucent ────────────────────────────────────── */
+  --color-surface-1:             rgba(255, 255, 255, 0.03);
+  --color-surface-2:             rgba(255, 255, 255, 0.055);
+  --color-surface-3:             rgba(255, 255, 255, 0.085);
+
+  /* ── Borders ─────────────────────────────────────────────────────────────── */
+  --color-bg-border:             rgba(255, 255, 255, 0.08);
+  --color-bg-border-strong:      rgba(255, 255, 255, 0.15);
+
+  /* ── Preview mat — a mid-grey canvas the preview sits on ─────────────────── */
+  --color-mat:                   #373640;
+
+  /* ── Signal — royal blue, "act here" ─────────────────────────────────────── */
+  --color-primary:               #3461E0;
+  --color-primary-hover:         #2A50C4;
+  --color-primary-muted:         rgba(52, 97, 224, 0.18);
+
+  --color-accent:                #7E97F2;
+  --color-accent-soft:           rgba(126, 151, 242, 0.13);
+
+  /* ── Brand gradient stops — blue · purple · magenta (the edge glow) ──────── */
+  --color-brand:                 #3461E0;
+  --color-brand-dark:            #2A50C4;
+  --color-brand-soft:            rgba(52, 97, 224, 0.18);
+  --color-grad-blue:             #3461E0;
+  --color-grad-purple:           #6E3F9E;
+  --color-grad-magenta:          #A23C7C;
+  --color-grad-warm:             #E0795F;
+
+  /* ── Text — white / cool grey ────────────────────────────────────────────── */
+  --color-text:                  #D9DAE6;
+  --color-text-primary:          #FBFBFE;
+  --color-text-dim:              #9C9EB0;
+  --color-text-muted:            #6A6C82;
+
+  /* ── States ──────────────────────────────────────────────────────────────── */
+  --color-success:               #5FCB95;
+  --color-error:                 #EC6F86;
+  --color-warning:               #E8B85C;
+
+  /* ── Scrim + controls ────────────────────────────────────────────────────── */
+  --color-scrim:                 rgba(0, 0, 0, 0.55);
+  --color-control-knob:          #F4F4FA;
+
+  /* ── Category accents — playful per-section colours ──────────────────────── */
+  --color-cat-profile:           #8A6FE0;
+  --color-cat-about:             #5E8BE8;
+  --color-cat-work:              #4FC2A8;
+  --color-cat-portfolio:         #E8A24C;
+  --color-cat-contact:           #E86FA8;
+  --color-cat-hero:              #6E7BF0;
+
+  /* ── macOS window dots (preview chrome illustration) ─────────────────────── */
+  --color-mac-red:               #FF5F57;
+  --color-mac-amber:             #FFBD2E;
+  --color-mac-green:             #28CA42;
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --font-sans:                   "Inter", sans-serif;
+  --font-display:                "Sora", "Inter", sans-serif;
+  --breakpoint-xs:               480px;
+
+  /* ── Radii ───────────────────────────────────────────────────────────────── */
+  --radius-field:                0.625rem;
+  --radius-card:                 1.375rem;
+  --radius-pill:                 999px;
+
+  /* ── Depth ───────────────────────────────────────────────────────────────── */
+  --shadow-raise-sm:
+    0 1px 1px rgba(0, 0, 0, 0.45),
+    0 3px 8px rgba(0, 0, 0, 0.32);
+  --shadow-raise-md:
+    0 1px 1px rgba(0, 0, 0, 0.50),
+    0 4px 12px rgba(0, 0, 0, 0.38),
+    0 16px 38px rgba(0, 0, 0, 0.42);
+  --shadow-raise-lg:
+    0 1px 2px rgba(0, 0, 0, 0.50),
+    0 8px 22px rgba(0, 0, 0, 0.44),
+    0 28px 64px rgba(0, 0, 0, 0.50);
+
+  /* ── Glow — blue. Primary action only. ───────────────────────────────────── */
+  --shadow-glow-xs:              0 0 14px rgba(52, 97, 224, 0.24);
+  --shadow-glow-sm:              0 4px 20px rgba(52, 97, 224, 0.38);
+  --shadow-glow-md:              0 8px 32px rgba(52, 97, 224, 0.48);
+  --shadow-glow-lg:              0 16px 50px rgba(52, 97, 224, 0.40);
+}
+
+/* ── Editor workspace scope — a mid-dark surface that stays comfortable
+      whether the live preview beside it is light or dark ───────────────────── */
+[data-theme="editor"] {
+  --color-bg:                    #242235;
+  --color-bg-shell:              #2C2A42;
+  --color-bg-surface:            #322F4C;
+  --color-bg-surface-light:      #3C3858;
+  --color-bg-surface-soft:       #1C1B2B;
+  --color-bg-surface-elevated:   #443F66;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+  }
+
+  button, [role="button"] { cursor: pointer; }
+  button:disabled         { cursor: not-allowed; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-bg-border-strong);
+    border-radius: var(--radius-pill);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-primary-muted); }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-bg-border-strong) transparent;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--color-bg);
+    /* purple / magenta glow bleeding from the edges over a near-black navy base */
+    background-image:
+      radial-gradient(ellipse 52% 48% at 100% 2%,  rgba(226, 116, 92, 0.28), transparent 66%),
+      radial-gradient(ellipse 46% 44% at 2% 24%,   rgba(110, 63, 158, 0.30), transparent 70%),
+      radial-gradient(ellipse 58% 50% at 50% 114%, rgba(52, 80, 180, 0.26),  transparent 72%),
+      linear-gradient(rgba(19, 17, 31, 0.82), rgba(19, 17, 31, 0.92)),
+      url("./assets/section-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--color-text);
+    letter-spacing: 0.005em;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Surface utilities — recipes built ONLY from the tokens above.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@layer utilities {
+
+  /* ── App shell — navy room lit by jewel glow ─────────────────────────────── */
+  .app-shell {
+    position: relative;
+    background:
+      linear-gradient(165deg,
+        color-mix(in srgb, var(--color-grad-purple) 20%, var(--color-bg)) 0%,
+        var(--color-bg) 52%,
+        color-mix(in srgb, var(--color-grad-blue) 16%, var(--color-bg)) 100%);
+  }
+  .app-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 54% 48% at 100% 0%,  rgba(226, 116, 92, 0.30), transparent 66%),
+      radial-gradient(ellipse 46% 44% at 0% 22%,   rgba(110, 63, 158, 0.32), transparent 68%),
+      radial-gradient(ellipse 58% 52% at 50% 118%, rgba(52, 80, 180, 0.28),  transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .app-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/noise.png");
+    background-size: 170px 170px;
+    opacity: 0.022;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Nav — studio rail ───────────────────────────────────────────────────── */
+  .nav-glass {
+    background: color-mix(in srgb, var(--color-bg-shell) 86%, transparent);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--color-bg-border);
+  }
+
+  /* ── Standard surface card ───────────────────────────────────────────────── */
+  .surface-card {
+    background:
+      linear-gradient(168deg, rgba(255,255,255,0.045) 0%, rgba(0,0,0,0.06) 100%),
+      var(--color-bg-surface);
+    border: 1px solid var(--color-bg-border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-raise-sm), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: transform 0.20s ease, box-shadow 0.20s ease;
+  }
+  .surface-card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-raise-md), inset 0 1px 0 rgba(255,255,255,0.07);
+  }
+
+  /* ── Gradient hero card ──────────────────────────────────────────────────── */
+  .surface-hero-card {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg,
+        color-mix(in srgb, var(--color-grad-blue) 26%, var(--color-bg-surface)) 0%,
+        var(--color-bg-surface) 56%,
+        color-mix(in srgb, var(--color-grad-magenta) 22%, var(--color-bg-surface)) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 26%, transparent);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raise-md);
+  }
+
+  /* ── Form section base (legacy) ──────────────────────────────────────────── */
+  .surface-form {
+    background:
+      linear-gradient(168deg, rgba(255,255,255,0.045) 0%, rgba(0,0,0,0.06) 100%),
+      var(--color-bg-surface);
+    border: 1px solid var(--color-bg-border);
+  }
+
+  /* ── The draft — a lit working sheet ─────────────────────────────────────── */
+  .form-card {
+    background:
+      linear-gradient(166deg,
+        rgba(255, 255, 255, 0.055) 0%,
+        rgba(255, 255, 255, 0.018) 42%,
+        rgba(0, 0, 0, 0.08)        100%),
+      var(--color-bg-surface-light);
+    border: 1px solid var(--color-bg-border);
+    border-radius: var(--radius-card);
+    box-shadow:
+      var(--shadow-raise-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.20s ease, box-shadow 0.20s ease;
+  }
+  .form-card:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      var(--shadow-raise-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  }
+
+  /* ── Editor form tray (recessed) ─────────────────────────────────────────── */
+  .surface-editor-tray {
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.26) 0%, rgba(0,0,0,0.08) 100%),
+      var(--color-bg-shell);
+    border: 1px solid var(--color-bg-border);
+    border-radius: var(--radius-card);
+    box-shadow:
+      inset 0 2px 10px rgba(0, 0, 0, 0.45),
+      inset 0 1px 2px rgba(0, 0, 0, 0.55);
+  }
+
+  /* ── Live-preview panel — the matted canvas ──────────────────────────────── */
+  .surface-preview {
+    background: var(--color-mat);
+    border: 1px solid var(--color-bg-border);
+    border-radius: var(--radius-card);
+  }
+
+  /* ── Input field — borderless, fill-defined ──────────────────────────────── */
+  .input-field {
+    background: var(--color-bg-surface-light);
+    border: 1px solid transparent;
+    border-radius: var(--radius-field);
+    outline: none;
+    transition: box-shadow 0.18s ease, background-color 0.18s ease;
+  }
+  .input-field:hover {
+    background: var(--color-bg-surface-elevated);
+  }
+  .input-field:focus,
+  .input-field:focus-within {
+    background: var(--color-bg-surface-elevated);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-primary) 55%, transparent);
+  }
+
+  /* ── Input error variant ─────────────────────────────────────────────────── */
+  .input-field-error {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-error) 48%, transparent);
+  }
+  .input-field-error:focus,
+  .input-field-error:focus-within {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-error) 60%, transparent);
+  }
+
+  /* ── Filled primary button — royal blue ──────────────────────────────────── */
+  .btn-fill {
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--color-primary) 90%, white) 0%,
+      var(--color-primary) 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow:
+      var(--shadow-glow-sm),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transition: filter 0.18s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  }
+  .btn-fill:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-md), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+  .btn-fill:active { transform: translateY(0); }
+
+  /* ── Outlined ghost button ───────────────────────────────────────────────── */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-dim);
+    border: 1px solid var(--color-bg-border);
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background: var(--color-surface-2);
+    color: var(--color-text);
+    border-color: var(--color-bg-border-strong);
+    transform: translateY(-1px);
+  }
+
+  /* ── Noise overlay ───────────────────────────────────────────────────────── */
+  .bg-noise {
+    position: relative;
+  }
+  .bg-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/noise.png");
+    background-size: 200px 200px;
+    opacity: 0.024;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Hero background (landing) — bold jewel glow ─────────────────────────── */
+  .bg-hero {
+    position: relative;
+    background-color: var(--color-bg);
+    background-image:
+      radial-gradient(ellipse 48% 54% at 96% 8%,  rgba(226, 116, 92, 0.36), transparent 64%),
+      radial-gradient(ellipse 40% 46% at 4% 22%,  rgba(110, 63, 158, 0.32), transparent 66%),
+      radial-gradient(ellipse 52% 44% at 54% 116%, rgba(52, 80, 180, 0.30), transparent 70%),
+      linear-gradient(rgba(19, 17, 31, 0.80), rgba(19, 17, 31, 0.92)),
+      url("./assets/section-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* ── Section background (landing) ────────────────────────────────────────── */
+  .bg-section {
+    background:
+      radial-gradient(ellipse 54% 42% at 2% 16%,   rgba(110, 63, 158, 0.20), transparent 70%),
+      radial-gradient(ellipse 48% 38% at 100% 80%, rgba(168, 58, 120, 0.18), transparent 70%),
+      var(--color-bg);
+  }
+
+  /* ── Text gradient — blue → purple → magenta ─────────────────────────────── */
+  .text-gradient {
+    background: linear-gradient(100deg, #5B7BF0 0%, #9166CC 38%, #C766A0 70%, #E68C6E 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Gradient background ─────────────────────────────────────────────────── */
+  .gradient-bg {
+    background: linear-gradient(135deg, var(--color-grad-blue), var(--color-grad-purple));
+  }
+
+  /* ── Glass surface ───────────────────────────────────────────────────────── */
+  .glass {
+    background: color-mix(in srgb, var(--color-bg-shell) 60%, transparent);
+    backdrop-filter: blur(22px);
+    border: 1px solid var(--color-bg-border);
+  }
+
+  /* ── Divider ─────────────────────────────────────────────────────────────── */
+  .section-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-bg-border-strong), transparent);
+  }
+
+  /* ── Primary button (landing) ────────────────────────────────────────────── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg,
+      color-mix(in srgb, var(--color-primary) 90%, white) 0%,
+      var(--color-primary) 100%);
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.875rem;
+    transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-glow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-md), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  /* ── Secondary button (landing) ──────────────────────────────────────────── */
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--color-text-primary);
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0.875rem;
+    border: 1px solid var(--color-bg-border-strong);
+    transition: border-color 0.2s, background-color 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+    background-color: var(--color-primary-muted);
+    transform: translateY(-1px);
+  }
+
+  /* ── Glass panel ─────────────────────────────────────────────────────────── */
+  .glass-panel {
+    position: relative;
+    background:
+      linear-gradient(168deg, rgba(255,255,255,0.04), rgba(0,0,0,0.05)),
+      var(--color-bg-shell);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--color-bg-border);
+    box-shadow: var(--shadow-raise-lg);
+    border-radius: var(--radius-card);
+  }
+
+  /* ── Sidebar panel ───────────────────────────────────────────────────────── */
+  .sidebar-panel {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-bg-shell);
+    border: 1px solid var(--color-bg-border);
+    border-radius: 0;
+    box-shadow: var(--shadow-raise-md);
+  }
+  .sidebar-panel::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-primary) 30%, transparent),
+      color-mix(in srgb, var(--color-primary)  6%, transparent) 35%,
+      transparent
+    );
+    pointer-events: none;
+  }
+
+  /* ── Glass card ──────────────────────────────────────────────────────────── */
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(168deg, rgba(255,255,255,0.05), rgba(0,0,0,0.05)),
+      var(--color-bg-surface);
+    border: 1px solid var(--color-bg-border);
+    box-shadow: var(--shadow-raise-md), inset 0 1px 0 rgba(255,255,255,0.05);
+    border-radius: var(--radius-card);
+    transition: transform 0.15s ease, box-shadow 0.25s ease;
+  }
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1.5px;
+    background: linear-gradient(90deg,
+      transparent,
+      var(--color-grad-blue),
+      var(--color-grad-magenta),
+      var(--color-grad-warm),
+      transparent
+    );
+    opacity: 0.65;
+    pointer-events: none;
+  }
+  .glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-raise-lg), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  /* ── Logo mark ───────────────────────────────────────────────────────────── */
+  .logo-mark {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+  }
+
+  /* ── Section title ───────────────────────────────────────────────────────── */
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+  }
+
+  /* ── Section subtitle ────────────────────────────────────────────────────── */
+  .section-subtitle {
+    color: var(--color-text-dim);
+    line-height: 1.75;
+  }
+
+  /* ── Image depth ─────────────────────────────────────────────────────────── */
+  .img-depth {
+    border-radius: 1rem;
+    box-shadow:
+      0 40px 80px -12px rgba(0,0,0,0.85),
+      0 16px 40px -8px rgba(0,0,0,0.6),
+      0 0 0 1px var(--color-bg-border);
+    mask-image: radial-gradient(ellipse 88% 80% at 50% 42%, black 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 88% 80% at 50% 42%, black 55%, transparent 100%);
+  }
+
+  /* ── Restyle button shimmer sweep ───────────────────────────────────────── */
+  .btn-restyle-shimmer {
+    position: absolute;
+    inset: 0;
+    transform: skewX(-12deg) translateX(-150%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 50%, transparent 100%);
+    animation: restyleShimmer 2.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes restyleShimmer {
+    0%   { transform: skewX(-12deg) translateX(-150%); }
+    55%, 100% { transform: skewX(-12deg) translateX(220%); }
+  }
+
+  /* ── Section intro card ──────────────────────────────────────────────────── */
+  .section-intro-card {
+    background:
+      linear-gradient(160deg,
+        color-mix(in srgb, var(--color-grad-blue) 18%, var(--color-bg-surface)) 0%,
+        var(--color-bg-surface) 55%,
+        color-mix(in srgb, var(--color-grad-purple) 14%, var(--color-bg-surface)) 100%);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-raise-md);
+  }
+
+  /* ── Hide scrollbar ──────────────────────────────────────────────────────── */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ── Legacy ambient glow (landing) ───────────────────────────────────────── */
+  .ambient-glow-tl {
+    position: relative;
+  }
+  .ambient-glow-tl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 0% 0%, var(--color-primary-muted) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}

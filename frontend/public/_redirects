@@ -1,0 +1,4 @@
+# SPA fallback — routes like /edit, /dashboard, /publish need to resolve to
+# index.html so the React router can pick them up. Recognised by Netlify and
+# Cloudflare Pages out of the box.
+/*  /index.html  200

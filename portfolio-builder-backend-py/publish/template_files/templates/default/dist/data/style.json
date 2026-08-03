@@ -1,0 +1,74 @@
+{
+  "theme": {
+    "mode": "dark",
+    "colors": {
+      "bg":         "#0D0C12",
+      "bgElevated": "#15131E",
+      "accent1":    "#A78BFA",
+      "accent2":    "#60A5FA",
+      "text":       "#F0EEFF",
+      "textDim":    "#8B8A9E",
+      "textMuted":  "#5A5870",
+      "shadow":     "rgba(0, 0, 0, 0.55)"
+    }
+  },
+
+  "typography": {
+    "headingFont":    "Syne",
+    "bodyFont":       "Inter",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Inter:wght@300..500&display=swap",
+    "scale":          "balanced",
+    "weight":         "regular",
+    "headingCase":    "none"
+  },
+
+  "backdrop": {
+    "base":     "gradient-tone",
+    "pattern":  "none",
+    "glow":     "corner",
+    "texture":  "grain",
+    "vignette": false
+  },
+
+  "depth": {
+    "elevation":       "ambient",
+    "shadowQuality":   "soft",
+    "surfaceContrast": "medium"
+  },
+
+  "surface": {
+    "radius":       "soft",
+    "borderWeight": "hairline",
+    "contentWidth": "standard"
+  },
+
+  "components": {
+    "card":           "border",
+    "tag":            "subtle",
+    "button":         { "primary": "gradient", "secondary": "outline" },
+    "sectionLabel":   "numbered",
+    "sectionHeading": "divider",
+    "sectionTitle":   "plain",
+    "socialIcon":     "plain",
+    "avatar":         { "shape": "circle", "frame": "gradient-ring" }
+  },
+  
+  "sections": {
+    "hero":           "overlay-typographic",
+    "experience":     "compact",
+    "education":      "cards",
+    "projects":       "bento",
+    "certifications": "list",
+    "research":       "list",
+    "testimonials":   "grid",
+    "contact":        "centered"
+  },
+
+  "motion": {
+    "intensity": "subtle",
+    "entrance":  "slide-up",
+    "cardHover": "lift",
+    "linkHover": "arrow",
+    "counters":  "off"
+  }
+}

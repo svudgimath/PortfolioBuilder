@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PortfolioStyleConfig",
+  "description": "Style configuration for portfolio templates. Each valid config should produce a visually distinct portfolio.",
+  "type": "object",
+  "required": ["meta", "theme", "typography", "effects", "components", "sections"],
+  "properties": {
+
+    "meta": {
+      "type": "object",
+      "required": ["name", "aesthetic"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "examples": ["Midnight Dev", "Clean Editorial", "Neon Brutalist"]
+        },
+        "aesthetic": {
+          "type": "string",
+          "enum": ["flat", "glassmorphism", "neumorphism", "brutalist", "material", "editorial", "cyberpunk"]
+        }
+      }
+    },
+
+    "theme": {
+      "type": "object",
+      "required": ["mode", "colors"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["light", "dark"] },
+        "colors": {
+          "type": "object",
+          "required": ["background", "surface", "primary", "accent", "textPrimary", "textSecondary", "border"],
+          "properties": {
+            "background":    { "type": "string", "description": "Page background" },
+            "surface":       { "type": "string", "description": "Card/container background" },
+            "primary":       { "type": "string", "description": "Brand color — links, CTAs, highlights" },
+            "accent":        { "type": "string", "description": "Secondary color for contrast" },
+            "textPrimary":   { "type": "string", "description": "Main text" },
+            "textSecondary": { "type": "string", "description": "Subdued text" },
+            "border":        { "type": "string", "description": "Borders and dividers" }
+          }
+        },
+        "gradient": {
+          "type": "string",
+          "description": "Primary gradient for accents/borders/hero text. 'none' to disable.",
+          "examples": ["linear-gradient(135deg, #818CF8, #34D399)", "none"]
+        }
+      }
+    },
+
+    "typography": {
+      "type": "object",
+      "required": ["headingFont", "bodyFont", "headingWeight", "headingTransform"],
+      "properties": {
+        "headingFont":      { "type": "string", "examples": ["Space Grotesk", "Playfair Display", "Archivo Black", "Sora"] },
+        "bodyFont":         { "type": "string", "examples": ["Inter", "Source Sans 3", "DM Sans", "Lora"] },
+        "monoFont":         { "type": "string", "default": "JetBrains Mono" },
+        "headingWeight":    { "type": "integer", "enum": [500, 600, 700, 800, 900] },
+        "headingTransform": { "type": "string", "enum": ["none", "uppercase"], "default": "none" }
+      }
+    },
+
+    "effects": {
+      "type": "object",
+      "required": ["borderRadius", "shadow"],
+      "properties": {
+        "borderRadius": {
+          "type": "string",
+          "enum": ["none", "sm", "md", "lg", "full"],
+          "description": "none=0px, sm=4px, md=8px, lg=16px, full=9999px"
+        },
+        "shadow": {
+          "type": "string",
+          "enum": ["none", "sm", "md", "lg", "hard"],
+          "description": "hard = brutalist offset shadow using primary color"
+        },
+        "blur": {
+          "type": "boolean",
+          "default": false,
+          "description": "Backdrop blur on surfaces (glassmorphism)"
+        }
+      }
+    },
+
+    "components": {
+      "type": "object",
+      "required": ["card", "badge", "button", "sectionHeader"],
+      "properties": {
+        "card": {
+          "type": "object",
+          "required": ["variant"],
+          "properties": {
+            "variant": {
+              "type": "string",
+              "enum": ["flat", "bordered", "shadow", "glass", "gradient-border", "neumorphic"]
+            },
+            "hoverEffect": {
+              "type": "string",
+              "enum": ["none", "lift", "glow", "border-color", "scale"],
+              "default": "lift"
+            }
+          }
+        },
+        "badge":         { "type": "string", "enum": ["filled", "outlined", "soft", "pill-filled", "pill-outlined", "pill-soft"] },
+        "button":        { "type": "string", "enum": ["solid", "outline", "ghost", "gradient", "underline"] },
+        "divider":       { "type": "string", "enum": ["line", "gradient", "dashed", "fade", "none"] },
+        "sectionHeader": { "type": "string", "enum": ["simple", "underline", "accent-left", "gradient-text", "numbered"] }
+      }
+    },
+
+    "sections": {
+      "type": "object",
+      "required": ["hero", "experience", "projects", "skills"],
+      "properties": {
+        "hero": {
+          "type": "object",
+          "required": ["layout"],
+          "properties": {
+            "layout":          { "type": "string", "enum": ["centered", "left-aligned", "split-image-right", "stacked-dramatic", "minimal-top"] },
+            "backgroundStyle": { "type": "string", "enum": ["none", "gradient", "pattern-dots", "pattern-grid", "blur-blobs"], "default": "none" }
+          }
+        },
+        "experience": {
+          "type": "object",
+          "required": ["layout"],
+          "properties": {
+            "layout": { "type": "string", "enum": ["timeline-left", "timeline-alternating", "card-stack", "list-compact"] }
+          }
+        },
+        "projects": {
+          "type": "object",
+          "required": ["layout"],
+          "properties": {
+            "layout": { "type": "string", "enum": ["grid-cards", "featured-alternating", "list-detailed", "showcase-large"] }
+          }
+        },
+        "skills": {
+          "type": "object",
+          "required": ["layout"],
+          "properties": {
+            "layout": { "type": "string", "enum": ["tag-cloud", "grouped-grid", "progress-bars", "compact-inline"] }
+          }
+        },
+        "contact": {
+          "type": "object",
+          "properties": {
+            "layout": { "type": "string", "enum": ["centered-minimal", "split-card", "full-width-bar"], "default": "centered-minimal" }
+          }
+        }
+      }
+    },
+
+    "navigation": {
+      "type": "string",
+      "enum": ["transparent-top", "solid-top", "floating-pill", "hidden-hamburger"],
+      "default": "solid-top"
+    },
+
+    "animations": {
+      "type": "object",
+      "properties": {
+        "enabled":      { "type": "boolean", "default": true },
+        "scrollReveal": { "type": "string", "enum": ["none", "fade-up", "fade-in", "slide-left"], "default": "fade-up" },
+        "intensity":    { "type": "string", "enum": ["subtle", "moderate", "expressive"], "default": "moderate" }
+      }
+    }
+  }
+}
