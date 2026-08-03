@@ -64,6 +64,8 @@ class PortfolioRepository:
             raise ValueError(f"Unknown section: {section}")
         doc = self.get_or_create(user_id)
         before = file_refs.collect(doc)
+        if section == "meta":
+            _sync_resume_cta(doc, data)
         doc[section] = data
         saved = self.save(doc)
         _delete_orphaned_files(before, file_refs.collect(saved))
@@ -82,6 +84,30 @@ class PortfolioRepository:
         saved = self.save(doc)
         _delete_orphaned_files(before, file_refs.collect(saved))
         return saved
+
+
+def _sync_resume_cta(doc: dict, new_meta: dict | None) -> None:
+    """The Hero CTA picker copies meta.resume into hero.cta.{primary,secondary}.href
+    at selection time rather than referencing it live (see CtaGroup in
+    PortfolioEditor.jsx). Re-uploading a resume otherwise leaves the Download
+    Resume button silently pointing at a now-deleted Cloudinary asset until the
+    user happens to revisit the Hero tab and re-pick it. Keep it in sync here
+    instead: if a CTA slot's href is the resume URL that's about to change,
+    update it (or clear the slot if the resume was removed)."""
+    old_resume = (doc.get("meta") or {}).get("resume")
+    new_resume = (new_meta or {}).get("resume")
+    if not old_resume or old_resume == new_resume:
+        return
+
+    hero = doc.get("hero")
+    cta = hero.get("cta") if hero else None
+    if not cta:
+        return
+
+    for slot in ("primary", "secondary"):
+        entry = cta.get(slot)
+        if entry and entry.get("href") == old_resume:
+            cta[slot] = {**entry, "href": new_resume} if new_resume else None
 
 
 def _delete_orphaned_files(before: set, after: set) -> None:

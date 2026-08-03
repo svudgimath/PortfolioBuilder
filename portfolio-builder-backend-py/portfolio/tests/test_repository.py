@@ -47,6 +47,42 @@ class PortfolioRepositoryTests(SimpleTestCase):
         self.assertEqual(doc["meta"], {"displayName": "A"})
         self.assertEqual(doc["hero"], {"greeting": "Hi"})
 
+    def test_update_section_meta_syncs_hero_cta_pointing_at_old_resume(self):
+        self.repo.update_section(self.user_id, "meta", {"resume": "https://old.example.com/resume.pdf"})
+        self.repo.update_section(self.user_id, "hero", {
+            "cta": {
+                "primary": {"label": "Download Resume", "href": "https://old.example.com/resume.pdf"},
+                "secondary": {"label": "Contact", "href": "#contact"},
+            }
+        })
+
+        doc = self.repo.update_section(self.user_id, "meta", {"resume": "https://new.example.com/resume.pdf"})
+
+        self.assertEqual(doc["hero"]["cta"]["primary"]["href"], "https://new.example.com/resume.pdf")
+        self.assertEqual(doc["hero"]["cta"]["primary"]["label"], "Download Resume")
+        # Untouched — its href never matched the old resume URL.
+        self.assertEqual(doc["hero"]["cta"]["secondary"]["href"], "#contact")
+
+    def test_update_section_meta_clears_hero_cta_when_resume_removed(self):
+        self.repo.update_section(self.user_id, "meta", {"resume": "https://old.example.com/resume.pdf"})
+        self.repo.update_section(self.user_id, "hero", {
+            "cta": {"primary": {"label": "Download Resume", "href": "https://old.example.com/resume.pdf"}}
+        })
+
+        doc = self.repo.update_section(self.user_id, "meta", {"resume": None})
+
+        self.assertIsNone(doc["hero"]["cta"]["primary"])
+
+    def test_update_section_meta_leaves_unrelated_hero_cta_alone(self):
+        self.repo.update_section(self.user_id, "meta", {"resume": "https://old.example.com/resume.pdf"})
+        self.repo.update_section(self.user_id, "hero", {
+            "cta": {"primary": {"label": "View Projects", "href": "#projects"}}
+        })
+
+        doc = self.repo.update_section(self.user_id, "meta", {"resume": "https://new.example.com/resume.pdf"})
+
+        self.assertEqual(doc["hero"]["cta"]["primary"], {"label": "View Projects", "href": "#projects"})
+
     def test_update_section_unknown_section_raises(self):
         with self.assertRaises(ValueError):
             self.repo.update_section(self.user_id, "nope", {})
