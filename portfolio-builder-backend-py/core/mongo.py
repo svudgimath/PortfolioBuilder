@@ -11,4 +11,8 @@ def get_db():
         # (implicitly UTC), which breaks comparisons against Django's aware
         # datetimes and silently drops the UTC offset from serialized timestamps.
         _client = MongoClient(settings.MONGODB_URI, tz_aware=True)
-    return _client.get_default_database()
+    # Explicit name rather than get_default_database() — some managed Mongo
+    # providers (e.g. Railway's MongoDB template) hand out a connection
+    # string with no database segment in the path, which makes pymongo's
+    # URI-default lookup raise ConfigurationError.
+    return _client["dzigned"]
