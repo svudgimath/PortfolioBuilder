@@ -33,8 +33,15 @@ def store(data: bytes, filename: str, declared_content_type: str | None, user_id
     # detected canonical type rather than trusting the client-provided one.
     verified_content_type = file_type_detector.verify(declared_content_type, data)
 
+    # "auto" resource_type classifies PDFs as "image" (Cloudinary can render page
+    # thumbnails from them), but newer Cloudinary accounts block direct delivery
+    # of non-image files served through the image delivery path by default —
+    # the download link 401s. "raw" delivery has no such restriction, so PDFs
+    # get it explicitly instead of leaving the choice to "auto".
+    resource_type = "raw" if verified_content_type == "application/pdf" else "image"
+
     options = {
-        "resource_type": "auto",  # image | raw (PDF) — Cloudinary detects
+        "resource_type": resource_type,
         "folder": f"dzigned/users/{user_id}",
         "use_filename": True,
         "unique_filename": True,

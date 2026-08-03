@@ -6,6 +6,7 @@ from core.exceptions import BadGatewayException, BadRequestException
 from files import service
 
 JPEG_BYTES = bytes([0xFF, 0xD8, 0xFF, 0xE0]) + b"restofjpeg"
+PDF_BYTES = b"%PDF-1.4" + b"restofpdf"
 
 
 class StoreTests(SimpleTestCase):
@@ -36,12 +37,26 @@ class StoreTests(SimpleTestCase):
         service.store(JPEG_BYTES, "photo.jpg", "image/jpeg", "user-123")
 
         _, kwargs = mock_upload.call_args
-        self.assertEqual(kwargs["resource_type"], "auto")
+        self.assertEqual(kwargs["resource_type"], "image")
         self.assertEqual(kwargs["folder"], "dzigned/users/user-123")
         self.assertTrue(kwargs["use_filename"])
         self.assertTrue(kwargs["unique_filename"])
         self.assertFalse(kwargs["overwrite"])
         self.assertEqual(kwargs["tags"], ["dzigned", "userId:user-123"])
+
+    @patch("files.service.cloudinary.uploader.upload")
+    def test_pdf_upload_forces_raw_resource_type(self, mock_upload):
+        # "auto" would classify a PDF under Cloudinary's "image" resource type,
+        # whose direct-delivery is blocked by default on newer accounts —
+        # PDFs must go through as "raw" so the download link actually works.
+        mock_upload.return_value = {
+            "secure_url": "u", "public_id": "p", "resource_type": "raw", "bytes": 1,
+        }
+
+        service.store(PDF_BYTES, "resume.pdf", "application/pdf", "user-123")
+
+        _, kwargs = mock_upload.call_args
+        self.assertEqual(kwargs["resource_type"], "raw")
 
     def test_store_rejects_corrupted_bytes_before_calling_cloudinary(self):
         with patch("files.service.cloudinary.uploader.upload") as mock_upload:
