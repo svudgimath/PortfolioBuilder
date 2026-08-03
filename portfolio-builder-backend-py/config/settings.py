@@ -11,6 +11,22 @@ SECRET_KEY = env("DJANGO_SECRET_KEY", default="django-insecure-dev-key-change-in
 DEBUG = env.bool("DJANGO_DEBUG", default=True)
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["*"])
 
+# ── Production safety: fail fast rather than boot with insecure dev defaults ──
+if not DEBUG:
+    _insecure_defaults = {
+        "DJANGO_SECRET_KEY": SECRET_KEY == "django-insecure-dev-key-change-in-production",
+        "JWT_SECRET": env("JWT_SECRET", default="default-dev-secret-change-in-production")
+        == "default-dev-secret-change-in-production",
+    }
+    _still_default = [name for name, is_default in _insecure_defaults.items() if is_default]
+    if _still_default:
+        raise RuntimeError(
+            "DJANGO_DEBUG=False but these env vars are still using their insecure dev "
+            f"defaults: {', '.join(_still_default)}. Set real values before deploying."
+        )
+    if ALLOWED_HOSTS == ["*"]:
+        raise RuntimeError("DJANGO_DEBUG=False requires DJANGO_ALLOWED_HOSTS to be set explicitly.")
+
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -28,6 +44,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
@@ -108,3 +125,16 @@ REST_FRAMEWORK = {
         "auth": "10/min",
     },
 }
+
+# ── Production hardening (HTTPS, reverse-proxy headers) ─────────────────────
+# Most PaaS platforms (Railway, Render, Fly.io, etc.) terminate TLS at a proxy and
+# forward plain HTTP internally, tagging the original scheme in this header.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+if not DEBUG:
+    SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=True)
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = env.int("SECURE_HSTS_SECONDS", default=31536000)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True

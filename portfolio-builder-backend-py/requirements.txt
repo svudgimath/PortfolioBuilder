@@ -11,3 +11,4 @@ httpx>=0.27
 cloudinary>=1.41,<2.0
 pypdf>=5.0,<6.0
 reportlab>=4.0,<5.0  # test fixtures only — generates real PDFs for resume-parse tests
+gunicorn>=23.0,<24.0  # production WSGI server
