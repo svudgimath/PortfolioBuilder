@@ -1,9 +1,6 @@
 from django.urls import include, path
 
-from core.views import HealthCheckView
-
 urlpatterns = [
-    path("health", HealthCheckView.as_view(), name="health"),
     path("api/auth/", include("accounts.urls")),
     path("api/", include("portfolio.urls")),
     path("api/", include("styles.urls")),
